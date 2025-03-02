@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5vw;
+  border-radius: 10px;
+  max-width: 90%;
+}
+
+h1 {
+  font-size: clamp(20px, 5vw, 40px);
+  margin-bottom: 15px;
+}
+
+input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 80%;
+  max-width: 250px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: clamp(14px, 2vw, 18px);
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  background: #ff4081;
+  color: white;
+  border-radius: 5px;
+}
+
+.message {
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: clamp(18px, 3vw, 24px);
+  width: 80%;
+  max-width: 600px;
+}
+
+.music-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  justify-content: space-beetwen;
+  align-items: center;
+  padding: 5px;
+  color: white;
+  font-size: 0.5rem;
+}
+
+.music-player button {
+  margin: 0 5px;
+  padding: 5px;
+  background: #ff4081;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.5rem;
+}
+
+.music-player button:hover {
+  background: #e03572;
+}

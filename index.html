@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+      <h1>Masukkan Nama & Umur U!</h1>
+      <input type="text" id="nameInput" placeholder="Ketik Nama...">
+      <input type="number" id="ageInput" placeholder="Masukkan Umur..." min="5">
+      <button id="startButton" onclick="startCelebration()">Lanjut?</button>
+  </div>
+
+  <script>
+      let moveCount = 0;
+      const button = document.getElementById("startButton");
+      const buttonTexts = ["Di Sini!", "Salah Kocak", "Wlee", "Serius Nih!"];
+
+      function moveButton() {
+          if (moveCount < buttonTexts.length) {
+              let container = document.querySelector(".container");
+              let maxX = container.clientWidth - button.clientWidth - 10;
+              let maxY = container.clientHeight - button.clientHeight - 10;
+
+              button.style.position = "absolute";
+              button.style.left = Math.random() * 90 + "vw";
+              button.style.top = Math.random() * 90 + "vh";
+              button.innerText = buttonTexts[moveCount];
+
+              moveCount++;
+          } else {
+              button.style.position = "static";
+              button.innerText = "Lanjut";
+              button.onclick = startCelebration;
+          }
+      }
+
+      function startCelebration() {
+          let name = document.getElementById('nameInput').value;
+          let age = document.getElementById('ageInput').value.trim();
+
+          if (name === "" || age === "") {
+        alert("Tolong isi nama dan umur u terlebih dahulu!");
+    } else {
+        localStorage.setItem('birthdayName', name);
+        localStorage.setItem('birthdayAge', age);
+        window.location.href = "birthday.html";
+    }
+}
+
+      button.addEventListener("mouseover", moveButton);
+  </script>
+</body>
+</html>

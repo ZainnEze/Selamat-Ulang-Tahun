@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="fireworksCanvas"></canvas>
+  <div class="message">
+    <h1 style="font-size:15px" id="typingText"></h1>
+  </div>
+
+  <div class="music-player">
+    <audio id="BgMusic" src="Monokrom-Tulus.mp3"></audio>
+    <div class="control">
+      <button id="playButton">Play</button>
+      <button id="pauseButton">Jeda</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let name = localStorage.getItem('birthdayName') || "Teman";
+      let age = localStorage.getItem('birthdayAge') || "??";
+      let message = `Selamat Ulang Tahun Yang Ke ${age}, ${name}!\n\n🎉🎂🎉\n\nSemoga hari ini penuh kebahagiaan dan kejutan indah! \nSetiap tahun adalah kesempatan untuk tumbuh lebih kuat, lebih bijak, dan lebih dekat dengan versi terbaik dirimu.\n Teruslah melangkah, dunia menantimu!🌞🌱\n\nJangan pernah berhenti mempercayai bahwa di balik semua kekurangan, ada kelebihan yang hanya menunggu waktu untuk bersinar.\n Kamu tidak perlu sempurna, karena justru ketidaksempurnaanmu yang membuat seseorang ingin mengenalmu lebih lama.🌟⏳\n\n Jika kau merasa tak istimewa, ingatlah: ada seseorang yang menyimpan semua cerita tentangmu sebagai harta berharganya.💝📖`;
+
+      let index = 0;
+      function typeText() {
+        if (index < message.length) {
+          let currentChar = message.charAt(index);
+           document.getElementById("typingText").innerHTML += currentChar === "\n" ? "<br>" : currentChar;
+           index++;
+           setTimeout(typeText, 95);
+         }
+     }
+           setTimeout(typeText, 2000);
+           setTimeout(() => {
+             let musicPlayer = document.querySelector(".music-player");
+             musicPlayer.style.display = "flex";
+             }, 2000);
+             
+             window.onload = function() {
+            setTimeout(() => {
+                let audio = document.getElementById("BgMusic");
+                audio.play().catch(error => {
+                    alert("Musik tidak dapat diputar secara otomatis. Silakan tekan tombol 'Play di kiri bawah' untuk mendengarkan.");
+                    document.getElementById("playButton").style.display = "block";
+                });
+             }, 2000);
+             };
+             let audio = document.getElementById("BgMusic");
+             document.getElementById("playButton").addEventListener("click", () => audio.play());
+             document.getElementById("pauseButton").addEventListener("click", () => audio.pause());
+      });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
